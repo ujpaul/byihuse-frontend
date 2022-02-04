@@ -156,7 +156,7 @@ export default {
           children: {}
         },
         {
-          path: `productCommande`,
+          path: `categoriesiii`,
           name: "Commande",
           icon: "pages",
           type: "sub_menu",

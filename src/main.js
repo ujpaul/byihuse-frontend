@@ -19,7 +19,7 @@ import VueSocialSharing from 'vue-social-sharing';
 
 // localisation messages
 import messages from './lang';
-
+import pageLoad from './components/Global/PageLoading'
 // global components
 import GlobalComponents from './globalComponents';
 
@@ -51,7 +51,9 @@ Vue.use(VueGoogleMaps, {
 Vue.use(GlobalComponents);
 // router navigation guards
 router.beforeEach((to, from, next) => {
-	Nprogress.start();
+	
+	// Nprogress.start();
+
 	next();
 });
 
