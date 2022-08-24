@@ -7,11 +7,11 @@
 						
 						<v-flex sm10 md5 lg6 xl6>
 							<div class="emb-card sign-in-form form-margin d-block white pa-6">
-								<h4>Create a new agent</h4>
+								<h4>{{$t('message.registerAsAgent')}}</h4>
 								<v-form ref="form" v-model="valid">
 									<v-text-field
 										type="text"
-										placeholder="Agent's First Name*"
+										:placeholder="$t('message.firstname')"
 										v-model="firstName"
 										:rules="inputRules.basictextRules"
 									>
@@ -19,21 +19,21 @@
 									<v-text-field
 										type="text"
 										v-model="lastName"
-										placeholder="Agent's Last Name*"
+										:placeholder="$t('message.lastname')"
 										:rules="inputRules.basictextRules"
 									>
 									</v-text-field>
 									<v-text-field
 										type="email"
 										v-model="email"
-										placeholder="Agent's Email*"
+										:placeholder="$t('message.yourEmail')"
 										:rules="emailRules"
 									>
 									</v-text-field>
 									<v-text-field
 										type="number"
 										v-model="phone"
-										placeholder="Agent's number*"
+										:placeholder="$t('message.yourPhone')"
 										:rules="inputRules.basictextRules"
 									>
 									</v-text-field>
@@ -47,13 +47,13 @@
 									<div v-if="show">
 										<v-text-field
 										type="text"
-										placeholder="Enter business address"
+										:placeholder="$t('message.businessAddress')"
 										v-model="address"
 									>
 									</v-text-field>
 									<v-text-field
 										type="number"
-										placeholder="Enter Tin number"
+										:placeholder="$t('message.tinNumber')"
 										v-model="tin"
 									>
 									</v-text-field>
@@ -61,7 +61,7 @@
 									</div>
 									<v-text-field
 										type="password"
-										placeholder="Enter Password*"
+										:placeholder="$t('message.yourPassword')"
 										v-model="password"
 										:rules="inputRules.basictextRules"
 									>
@@ -69,14 +69,14 @@
 									<v-text-field
 										class="mb-4"
 										type="password"
-										placeholder="confirm Password*"
+										:placeholder="$t('message.confirmPassword')"
 										v-model="repassword"
 										:rules="inputRules.basictextRules"
 									>
 									</v-text-field>
-									<h4>Service fee: 11800 RWF</h4>
+									<h4>{{$t('message.serviceFee')}}: 11800 RWF</h4>
 									<v-btn :loading="loading" class="accent mx-0 mb-4" large  @click.stop.prevent="saveDetails">
-										Register & Pay
+										{{$t('message.register')}}
 									</v-btn>
 								</v-form>
 							</div>

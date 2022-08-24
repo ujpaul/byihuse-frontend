@@ -7,7 +7,7 @@
 				dark
 				@click.stop="drawer = !drawer"
 			>
-				{{$t("message.ShowOrderDetail")}}:<emb-currency-sign></emb-currency-sign>{{(getTotalPrice/currentValue).toFixed(2)}}
+				{{$t("message.ShowOrderDetail")}}:<emb-currency-sign></emb-currency-sign>{{itemsQuantity >11 ? ((getTotalPrice/currentValue)-(itemTotal/currentValue*3)/100).toFixed(2):(getTotalPrice/currentValue).toFixed(2)}}
 			</v-btn>
 		</v-layout>
 		 <v-navigation-drawer fixed width="340" right v-model="drawer" temporary>
@@ -102,6 +102,15 @@
 			// drawer () {
 			// 	return this.$store.state.drawer
 			// },
+	
+			itemsQuantity() {
+			let items = null;
+			for (const item of this.cart) {
+				items += parseInt(item.quantity);
+			}
+			return items;
+			},
+			
 			itemTotal(){
 			let productTotal = null
 				if (this.cart.length > 0) {

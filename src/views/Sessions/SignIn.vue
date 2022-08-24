@@ -13,11 +13,11 @@
                 <v-form>
                   <v-text-field
                     type="email"
-                    placeholder="Email*"
+                    :placeholder="$t('message.yourEmail')"
                     :rules="emailRules"
                     v-model="Email"
                   ></v-text-field>
-                  <v-text-field type="password" placeholder="Password*" v-model="password"></v-text-field>
+                  <v-text-field type="password" :placeholder="$t('message.yourPassword')" v-model="password"></v-text-field>
                   <div class="layout align-center justify-space-between">
                     <v-checkbox v-model="checkbox" :label="$t(RememberMe)"></v-checkbox>
                     <!-- <router-link to="/session/forgot-password" class=" text-lg-right">Forgot Password ?</router-link> -->

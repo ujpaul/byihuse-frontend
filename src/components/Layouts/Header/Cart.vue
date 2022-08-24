@@ -48,7 +48,7 @@
 					</v-list>
 				</emb-perfect-scrollbar>
 				<emb-delete-confirmation ref="deleteConfirmationDialog"
-					message="Are you sure you want to delete this product?" @onConfirm="onDeleteProductFromCart">
+					:message="$t('message.deleteMsg')" @onConfirm="onDeleteProductFromCart">
 				</emb-delete-confirmation>
 				<v-layout align-center pa-3>
 					<v-btn  v-if="!cart[0].isDryCleaner" class="accent white--text" block :to="'/'+$i18n.locale+'/checkout/payment'">{{$t("message.Checkout")}}</v-btn>

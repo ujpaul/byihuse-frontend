@@ -10,16 +10,16 @@
             <v-flex lg4 xl4 xs12 sm6 md6>
               <v-text-field
                 v-model="userInfo.firstName"
-                :rules="inputRules.basictextRules"
-                :label="label.firstName"
+                :rules="inputRules.text"
+                :label="$t('message.firstname')"
                 required
               ></v-text-field>
             </v-flex>
             <v-flex lg4 xl4 xs12 sm6 md6>
               <v-text-field
                 v-model="userInfo.lastName"
-                :rules="inputRules.basictextRules"
-                :label="label.lastName"
+                :rules="inputRules.text"
+                :label="$t('message.lastname')"
                 required
               ></v-text-field>
             </v-flex>
@@ -27,7 +27,7 @@
               <v-text-field
                 v-model="userInfo.streetName"
                 :rules="inputRules.basictextRules"
-                :label="label.streetName"
+                :label="$t('message.roadNumber')"
                 required
               ></v-text-field>
             </v-flex>
@@ -40,8 +40,8 @@
             <v-flex lg6 xl6 md6 sm6 xs12>
               <v-text-field
                 v-model="userInfo.cityState"
-                :rules="inputRules.basictextRules"
-                :label="label.cityState"
+                :rules="inputRules.text"
+                :label="$t('message.city')"
                 required
               ></v-text-field>
             </v-flex>
@@ -52,7 +52,7 @@
               <v-select
                 class="mt-6"
                 :items="countries"
-                :label="label.country"
+                :label="$t('message.country')"
                 v-model="userInfo.country"
                 dense
               ></v-select>
@@ -65,12 +65,13 @@
                 <v-text-field
                   v-model="userInfo.phone"
                   :rules="inputRules.basictextRules"
-                  :label="label.phone"
+                  :label="$t('message.yourPhone')"
+                  type="number"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex lg6 xl6 md6 sm12>
-                <v-text-field v-model="userInfo.email" :label="label.email"></v-text-field>
+                <v-text-field v-model="userInfo.email" :label="$t('message.yourEmail')" :rules="inputRules.emailRules"></v-text-field>
               </v-flex>
               <v-flex lg6 xl6 md6 sm12>
                 <input type="hidden" v-model="userInfo.id" />
@@ -123,13 +124,18 @@ export default {
         id: ""
       },
       inputRules: {
-        basictextRules: [v => !!v || "This field should not be empty."],
+      basictextRules: [v => !!v || "This field should not be empty.",
+        ],
         emailRules: [
           v => !!v || "This field should not be empty.",
           v =>
             /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
             "E-mail must be valid"
-        ]
+        ],
+        text:[
+          v => !!v || "This field should not be empty.",
+        v => /^[A-Z ]+$/i.test(v) || "This field should be text"
+        ],
       }
     };
   },

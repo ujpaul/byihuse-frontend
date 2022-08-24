@@ -98,24 +98,24 @@
           </v-col>
           <v-col cols="12" sm="12" md="6" lg="6" class="content-wrap pl-md-6">
 
-            <v-text-field prepend-icon="add" v-model="names" label="Band representative names"></v-text-field>
+            <v-text-field prepend-icon="add" v-model="names" :label="$t('message.bandRepresentative')"></v-text-field>
             <v-text-field prepend-icon="add" v-model="email" :label="$t('message.yourEmail')"></v-text-field>
             <v-text-field prepend-icon="add" v-model="phone" :label="$t('message.yourPhone')"></v-text-field>
-            <v-select v-model="item" :items="items" label="Are you single artist or group ?" @change="onChange"></v-select>
-            <v-text-field prepend-icon="add" v-model="name" :label="label"></v-text-field>
-            <v-text-field prepend-icon="add" v-model="experience" label="Tell us your experience"></v-text-field>
-            <v-textarea v-model="details" outlined label="Describe yourself"></v-textarea>
+            <v-select v-model="item" :items="items" :label="$t('message.isGroupOrSingleArtist')" @change="onChange"></v-select>
+            <v-text-field prepend-icon="add" v-model="name" :label="$t('message.bandName')"></v-text-field>
+            <v-text-field prepend-icon="add" v-model="experience" :label="$t('message.bandExperience')"></v-text-field>
+            <v-textarea v-model="details" outlined :label="$t('message.describeyourselft')"></v-textarea>
             <v-text-field
               prepend-icon="add"
               v-model="price"
               class="price-input"
-              placeholder="Add Price per hour"
+              :placeholder="$t('message.pricePerHour')"
             ></v-text-field>
             <v-text-field
               prepend-icon="add"
               v-model="pricePerDay"
               class="price-input"
-              placeholder="Add Price per day"
+              :placeholder="$t('message.pricePerDay')"
             ></v-text-field>
             <div class="d-flex">
                 <v-btn
@@ -124,8 +124,8 @@
               :loading="loading"
               class="mx-3"
               large
-            >Create</v-btn>
-            <h5 style="color: red;margin-top: 10px;">Service fees: 6000 RWF</h5>
+            >{{$t('message.registerProperty')}}</v-btn>
+            <h5 style="color: red;margin-top: 10px;">{{$t('serviceFee')}}: 6000 RWF</h5>
             </div>
           </v-col>
         </v-row>

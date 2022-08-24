@@ -101,19 +101,19 @@
             <v-text-field prepend-icon="add" v-model="names" :label="$t('message.yourNames')"></v-text-field>
             <v-text-field prepend-icon="add" v-model="email" :label="$t('message.yourEmail')"></v-text-field>
             <v-text-field prepend-icon="add" v-model="phone" :label="$t('message.yourPhone')"></v-text-field>
-            <v-text-field prepend-icon="add" v-model="name" label="Property name"></v-text-field>
-            <v-text-field prepend-icon="add" v-model="description" label="Property description"></v-text-field>
+            <v-text-field prepend-icon="add" v-model="name" :label="$t('message.propertyName')"></v-text-field>
+            <v-text-field prepend-icon="add" v-model="description" :label="$t('message.propertyDescription')"></v-text-field>
             <v-text-field
               prepend-icon="add"
               v-model="price"
               class="price-input"
-              placeholder="Add Price per hour"
+              :placeholder="$t('message.pricePerHour')"
             ></v-text-field>
             <v-text-field
               prepend-icon="add"
               v-model="pricePerDay"
               class="price-input"
-              placeholder="Add Price per day"
+              :placeholder="$t('message.pricePerDay')"
             ></v-text-field>
             <div class="d-flex">
                 <v-btn
@@ -122,8 +122,8 @@
               :loading="loading"
               class="mx-3"
               large
-            >Create</v-btn>
-            <h5 style="color: red;margin-top: 10px;">Service fees: 6000 RWF</h5>
+            >{{$t('message.registerProperty')}}</v-btn>
+            <h5 style="color: red;margin-top: 10px;">{{$t('message.serviceFee')}}: 6000 RWF</h5>
             </div>
           </v-col>
         </v-row>

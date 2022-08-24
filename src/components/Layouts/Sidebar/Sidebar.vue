@@ -157,18 +157,18 @@ export default {
         },
         {
           path: `categoriesiii`,
-          name: "Commande",
+          name: "message.menuCommande",
           icon: "pages",
           type: "sub_menu",
           children: [
         {
           path: `product-commande`,
-          name: "Make commande",
+          name: "message.makeCommandMenu",
           icon: "perm_contact_calendar"
         },
         {
           path: `confirm-commande`,
-          name: "Confirm Received Commande",
+          name: "message.confirmCommande",
           icon: "perm_contact_calendar"
         },
           ],
@@ -181,7 +181,7 @@ export default {
         },
         {
           path: `categoriesiii`,
-          name: "message.services",
+          name: "message.menuService",
           icon: "pages",
           type: "sub_menu",
           children: [
@@ -286,7 +286,7 @@ export default {
         },
         {
           path: `agent`,
-          name: "Agent",
+          name: "message.menuAgent",
           icon: "perm_contact_calendar",
           children: null
         },

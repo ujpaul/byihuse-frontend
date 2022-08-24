@@ -49,7 +49,7 @@
 					</v-list>
 				</emb-perfect-scrollbar>
 				<emb-delete-confirmation ref="deleteConfirmationDialog"
-					message="Are you sure you want to delete this product?" @onConfirm="onDeleteProductFromWishlist">
+					:message="$t('message.deleteMsg')" @onConfirm="onDeleteProductFromWishlist">
 				</emb-delete-confirmation>
 				<v-layout align-center pa-3>
 					<v-btn class="accent white--text" block @click="addAllWishlistItemToCart">{{$t("message.Addalltocart")}}</v-btn>

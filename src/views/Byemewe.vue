@@ -27,7 +27,7 @@
                         <v-file-input show-size label="Upload your cv(pdf)" v-model="document" accept="application/pdf"></v-file-input>
                         <v-file-input show-size label="Upload photo passport" v-model="image" accept="image/*"></v-file-input>
                         
-                    <h5>Registration fees: 6000 RWF</h5>
+                    <h5>{{$t('message.serviceFee')}}: 6000 RWF</h5>
                     <v-checkbox
                     :label="$t('message.termAndCondition')"
                     v-model="terms"

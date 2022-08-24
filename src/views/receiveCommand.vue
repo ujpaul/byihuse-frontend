@@ -7,11 +7,11 @@
 						
 						<v-flex sm10 md5 lg6 xl6>
 							<div class="emb-card sign-in-form form-margin d-block white pa-6">
-								<h4>Emeza ko wakiriye commande yawe</h4>
+								<h4>{{$t('message.confirmCommande')}}</h4>
 								<v-form ref="form" v-model="valid">
 									<v-text-field
 										type="text"
-										placeholder="Names*"
+										:placeholder="$t('message.yourNames')"
 										v-model="names"
 										:rules="inputRules.basictextRules"
 									>
@@ -19,25 +19,25 @@
 									<v-text-field
 										type="email"
 										v-model="email"
-										placeholder="Email*"
+										:placeholder="$t('message.yourEmail')"
 										:rules="emailRules"
 									>
 									</v-text-field>
 									<v-text-field
 										type="number"
 										v-model="phone"
-										placeholder="phone number*"
+										:placeholder="$t('message.yourPhone')"
 										:rules="inputRules.basictextRules"
 									>
 									</v-text-field>
 									<v-text-field
-									label="Andika izina ry'ukuzaniye commande*"
+									:label="$t('message.deliverName')"
 									v-model="umukozi"
 									>
 									</v-text-field>
 									<v-text-field
 										type="text"
-										placeholder="Izina rya commande*"
+										:placeholder="$t('message.commandName')"
 										v-model="product"
 										:rules="inputRules.basictextRules"
 									>
