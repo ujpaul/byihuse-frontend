@@ -47,6 +47,7 @@ export default {
   facebook: "Facebook",
   twitter: "Twitter",
   youtube: "Youtube",
+  instagram:"Instagram",
   googlePlus: "Google Plus",
   reports: "Reports",
   invoices: "Invoices",
@@ -144,6 +145,7 @@ export default {
   EditNames: "Edit Names",
   EditEmails: "Edit Emails",
   EditPassword: "Edit Password",
+  yourPassword:"Type password",
   Orderdetails: "Order details",
   Close: "Close",
   DeliverTo: "Deliver To",
@@ -208,7 +210,7 @@ export default {
   PayWithMobileMoney: "Pay With Mobile Money",
   Clear: "Clear",
   FreeDelivery: "Free Delivery",
-  productsinfewhours: "get your products in few hours",
+  productsinfewhours: "only in kigali/outside to be discussed",
   PremiumDelivery: "Premium Delivery",
   getorderrightaway: "get your order right away",
   ShowOrderDetail: "Show Order Detail",
@@ -313,7 +315,13 @@ export default {
   tinNumber:"Enter Tin number",
   confirmPassword:"Confirm password",
   businessAddress:"Enter business address",
-  registerAsAgent:"Register as Agent"
-
+  registerAsAgent:"Register as Agent",
+  serviceAddress:"location where service will be carried out",
+  serviceType:"Select service",
+  feePaid:"Fee paid",
+  level:"Level",
+  subject:"Subject",
+  typeMsg:"Type your message",
+  serviceCommand:"Service you need not found? write it here"
 
 };

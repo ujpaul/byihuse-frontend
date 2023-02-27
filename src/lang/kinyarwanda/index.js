@@ -47,6 +47,7 @@ export default {
   facebook: "Facebook",
   twitter: "Twitter",
   youtube: "Youtube",
+  instagram:"Instagram",
   googlePlus: "Google Plus",
   reports: "Rapports",
   invoices: "Factures",
@@ -126,7 +127,7 @@ export default {
   Fillthisform: "Remplissez ce formulaire pour demander cette location",
   RentingHour: "Amasaha Wakodesheje",
   RentingDay: "Iminsi Wakodesheje",
-  Startingatonly: "À seulement",
+  Startingatonly: "Ku mafaranga",
   Submit: "Ohereza",
   Fillservice: "Uzuza amakuru kugirango ubone iyi service",
   Services: "Services",
@@ -202,7 +203,7 @@ export default {
   PayWithMobileMoney: "Ishyura na Mobile Money",
   Clear: "Siba",
   FreeDelivery: "Kukuzanira ibyo wahashye kubuntu",
-  productsinfewhours: "obtenez vos produits en quelques heures",
+  productsinfewhours: "Muri kigali gusa/Hanze ya kigali tubivuganaho",
   PremiumDelivery: "Kukuzanira Ibyo wahashye ako kanya",
   getorderrightaway: "recevez votre commande tout de suite",
   ShowOrderDetail: "Amafaranga uri byishyure",
@@ -304,8 +305,13 @@ export default {
   confirmPassword:"Emeza ijambo banga",
   tinNumber:"Tin number yawe",
   businessAddress:"Shyiramo aho business yawe ikorera",
-  registerAsAgent:"Iyandikishe nk'umu Ejenti"
-
-
+  registerAsAgent:"Iyandikishe nk'umu Ejenti",
+  serviceAddress:"Aho serivisi izakorerwa",
+  serviceType:"Hitamo serivisi",
+  feePaid:"Ayishyurwa",
+  level:"Amashuri",
+  subject: "Umutwe w'ubutumwa(subject)",
+  typeMsg:"Andika ubutumwa bwawe",
+  serviceCommand:"Serivisi ushaka ntiri kuboneka? yandike tugufashe"
 
 };

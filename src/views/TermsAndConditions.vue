@@ -5,7 +5,7 @@
 		>
 		</emb-page-title>
 		<div class="text-center">
-			<h4 class="mt-4 mb-5">Terms and conditions</h4>
+			<h4 class="mt-4 mb-5">{{$t('message.termsAndCondition')}}</h4>
 		</div>
 		<v-container>
 			<div class="ms-5 me-5">

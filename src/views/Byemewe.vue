@@ -1,62 +1,71 @@
 <template>
-   <div class="emb-contact-wrap">
-		<emb-page-title
-			heading="message.Services"
-			subHeading="message.Useourservices"
-            subTitle="Akira Byemewe"
-		>
-		</emb-page-title>
-        <div class="delivery" style="margin:20px 10px 30px 10px;">
-			<v-btn style="min-width: 45%; height: 60px" @click="registerAsLawyer" :class="{accent: attached}">{{$t("message.RegisterAsLawyer")}} </v-btn>
-			<v-btn style="min-width: 54%; height: 60px" id="premium" @click="findLawyers" :class="{accent: !attached}">{{$t("message.FindLawyers")}} </v-btn>
-		</div>
-        <v-flex xs12 sm12 md6 lg6 xl8>
-            <div class="mt-5"> 
-                <v-card style="margin-left: 20px;">
-                    <div class="text-center" style="margin-left: 20px;">
-                        <v-card-text v-if="registerLawyer">
-                        <v-form  ref="form" v-model="valid">
-                        <v-text-field :placeholder="$t('message.yourNames')" v-model="names" :rules="inputRules.basictextRules"></v-text-field>
-                        <v-text-field @keyup="checkInvalidId" :placeholder="$t('message.idNumber')" v-model="idnbr" :rules="inputRules.basictextRules" type="number"></v-text-field>
-                        <small style="color: red;" v-if="invalidIdNumber">Invalid id number</small>
-                        <v-text-field :placeholder="$t('message.yourPhone')" type="number" v-model="phone" :rules="inputRules.basictextRules"></v-text-field>
-                        <v-text-field :placeholder="$t('message.yourEmail')" type="email" v-model="email" :rules="inputRules.emailRules"></v-text-field>
-                        <v-select :items="types" :label="$t('message.typeOfLawyer')" v-model="type"></v-select>
-                        <v-text-field :placeholder="$t('message.province')" v-model="province" :rules="inputRules.basictextRules"></v-text-field>
-                        <v-text-field :placeholder="$t('message.district')" v-model="district" :rules="inputRules.basictextRules"></v-text-field>
-                        <v-file-input show-size label="Upload your cv(pdf)" v-model="document" accept="application/pdf"></v-file-input>
-                        <v-file-input show-size label="Upload photo passport" v-model="image" accept="image/*"></v-file-input>
-                        
-                    <h5>{{$t('message.serviceFee')}}: 6000 RWF</h5>
-                    <v-checkbox
-                    :label="$t('message.termAndCondition')"
-                    v-model="terms"
-                    @click="toggleEnableDisable()"
-                    ></v-checkbox>
-                        <v-btn :loading="loading" class="accent" large @click="register" :disabled="isDisabled">{{$t('message.Submit')}}</v-btn>
-                        </v-form>
-                        
-                    </v-card-text>
-                    </div>
-               
-                </v-card>
-                <v-container style="margin: 10px 10px 100px 0;" v-if="searchLawyers">
-                    <div style="width: 49%">
-                        <v-select :items="types" :label="$t('message.typeOfLawyer')" v-model="type" @change="selectLawyer = false"></v-select>
-                        <span style="color: red" v-if="selectLawyer">*this field is required</span>
-                    </div>
-                     <v-flex xs12 sm12 md6 lg7 xl5  search-v3-wrap>
-                           <input class="input" v-on:keyup.enter="search" style="width:85%;height:48px;"  v-model="keyword" type="text" :placeholder="$t('message.searchByDistrict')">
-                           <v-btn @click="search"  icon>
-                              <v-icon>search</v-icon>
-                           </v-btn>
-                     </v-flex>
-               </v-container>
+   <div>
+    <div class="emb-contact-wrap">
+<emb-page-title
+   heading="message.Services"
+   subHeading="message.Useourservices"
+   subTitle="Akira Byemewe"
+   >
+</emb-page-title>
+<div class="delivery" style="margin:20px 10px 30px 10px;">
+   <v-btn style="min-width: 45%; height: 60px" @click="registerAsLawyer" :class="{accent: attached}">{{$t("message.RegisterAsLawyer")}} </v-btn>
+   <v-btn style="min-width: 54%; height: 60px" id="premium" @click="findLawyers" :class="{accent: !attached}">{{$t("message.FindLawyers")}} </v-btn>
+</div>
+<v-flex xs12 sm12 md4 lg3 xl4>
+      <div v-if="registerLawyer" style="width: 100%">
+         <v-card style="margin-left: 20px; width:700px">
+            <div class="text-center" style="margin: 10px;">
+               <v-card-text >
+                  <v-form  ref="form" v-model="valid">
+                     <v-text-field :placeholder="$t('message.yourNames')" v-model="names" :rules="inputRules.basictextRules"></v-text-field>
+                     <v-text-field @keyup="checkInvalidId" :placeholder="$t('message.idNumber')" v-model="idnbr" :rules="inputRules.basictextRules" type="number"></v-text-field>
+                     <small style="color: red;" v-if="invalidIdNumber">Invalid id number</small>
+                     <v-text-field :placeholder="$t('message.yourPhone')" type="number" v-model="phone" :rules="inputRules.basictextRules"></v-text-field>
+                     <v-text-field :placeholder="$t('message.yourEmail')" type="email" v-model="email" :rules="inputRules.emailRules"></v-text-field>
+                     <v-select :items="types" :label="$t('message.typeOfLawyer')" v-model="type"></v-select>
+                     <v-text-field :placeholder="$t('message.province')" v-model="province" :rules="inputRules.basictextRules"></v-text-field>
+                     <v-text-field :placeholder="$t('message.district')" v-model="district" :rules="inputRules.basictextRules"></v-text-field>
+                     <v-file-input show-size label="Upload your cv(pdf)" v-model="document" accept="application/pdf"></v-file-input>
+                     <v-file-input show-size label="Upload photo passport" v-model="image" accept="image/*"></v-file-input>
+                     <h5>{{$t('message.serviceFee')}}: 6,000 RWF</h5>
+                     <v-checkbox
+                        :label="$t('message.termAndCondition')"
+                        v-model="terms"
+                        @click="toggleEnableDisable()"
+                        ></v-checkbox>
+                     <v-btn :loading="loading" class="accent" large @click="register" :disabled="isDisabled">{{$t('message.Submit')}}</v-btn>
+                  </v-form>
+               </v-card-text>
             </div>
-        </v-flex>
-   </div>
+         </v-card>
+      </div>     
+</v-flex>
+<v-flex xs12 sm12 md4 lg3 xl4>
+<akira-calcultaion :VAT="900" :fees="fees" :akira="165" v-if="registerLawyer" style="margin:10px"/>
+</v-flex>
+</div>
+<v-flex xs12 sm12 md6 lg6 xl8>
+<v-container style="margin: 10px 10px 100px 0;" v-if="searchLawyers">
+<div style="width: 49%">
+<v-select :items="types" :label="$t('message.typeOfLawyer')" v-model="type" @change="selectLawyer = false"></v-select>
+<span style="color: red" v-if="selectLawyer">*this field is required</span>
+</div>
+<v-flex xs12 sm12 md4 lg7 xl5  search-v3-wrap>
+<input class="input" v-on:keyup.enter="search" style="width:85%;height:48px;"  v-model="keyword" type="text" :placeholder="$t('message.searchByDistrict')">
+<v-btn @click="search"  icon>
+<v-icon>search</v-icon>
+</v-btn>
+</v-flex>
+</v-container>
+<!-- </div>-->
+</v-flex>
+</div>
 </template>
 <style scoped>
+.flex-container{
+    display: flex;
+    justify-content: space-evenly;
+}
 .input{
     border: 1px #EEEEEE solid;
     padding-left: 10px;
@@ -105,10 +114,15 @@
 </style>
 <script>
 import lawyers from 'Api/Lawyers';
+import AkiraCalcultaion from '../components/Global/AkiraCalculation.vue'
 import { mapGetters } from "vuex";
 export default {
+    components:{
+        AkiraCalcultaion
+    },
   data() {
     return {
+        fees:'6,000',
         loading: false,
         registerLawyer: false,
         isDisabled: true,
@@ -128,9 +142,9 @@ export default {
         type: '',
          selectLawyer: false,
         types:[
-            {text:'Noteri', value:'noteri'},
-            {text:'Umwungnizi mumategeko', value:'umunyamategeko'},
-            {text:"Umuhesha w'inkiko", value:'umuhesha'},
+            {text:'Notary', value:'noteri'},
+            {text:'Lawyer', value:'umunyamategeko'},
+            {text:"Bailiff", value:'umuhesha'},
         ],
       emailRules: [
         v => !!v || "E-mail is required",

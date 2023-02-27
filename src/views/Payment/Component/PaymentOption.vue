@@ -283,7 +283,7 @@ export default {
         for (const item of this.cart) {
           productTotal += item.price * item.quantity;
         }
-        return productTotal;
+        return productTotal + this.$store.state.shipping;
       } else {
         return productTotal;
       }
@@ -326,7 +326,7 @@ export default {
             paymentOption: option,
             phoneNumber: this.userDetails.phone,
             MoMoPhoneNumber: this.userDetails.phone,
-            totalAmmount: this.total,
+            totalAmmount: this.total + this.$store.state.shipping,
             products: this.product,
             delivery: this.shipping,
             discount: this.calculateDiscount(),

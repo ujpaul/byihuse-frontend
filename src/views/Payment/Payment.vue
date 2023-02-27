@@ -7,7 +7,7 @@
 				<template v-if="cart.length > 0">
 					<div class="delivery" style="margin-bottom: 30px">
 							<v-btn style="min-width: 45%; height: 60px" @click="freedelivery" :class="{accent: attached}">{{$t("message.FreeDelivery")}} <small>({{$t("message.productsinfewhours")}})</small></v-btn>
-							<v-btn style="min-width: 54%; height: 60px" id="premium" @click="premiumdelivery" :class="{accent: !attached}">{{$t("message.PremiumDelivery")}} - <emb-currency-sign></emb-currency-sign>{{(2000/currentValue).toFixed(2)}} <small>({{$t("message.getorderrightaway")}})</small></v-btn>
+							<v-btn style="min-width: 54%; height: 60px" id="premium" @click="premiumdelivery" :class="{accent: !attached}">{{$t("message.PremiumDelivery")}} - <emb-currency-sign></emb-currency-sign>{{(3000/currentValue).toFixed(2)}} <small>({{$t("message.productsinfewhours")}})</small></v-btn>
 						</div>
 					<div class="deliveryNavigation">
 						
@@ -109,7 +109,11 @@ export default {
 		},
 		premiumdelivery(){
 			this.attached= false
-			this.$store.state.shipping= 2000
+			if(this.$store.state.shipping === 3000){
+				this.$store.state.shipping= 0
+			}else{
+				this.$store.state.shipping = 3000;
+			}
 			// console.log('helo')
 		}
 	}

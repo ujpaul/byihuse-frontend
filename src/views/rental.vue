@@ -150,8 +150,13 @@
                     {{ $t("message.Startingatonly") }}
                     <emb-currency-sign class="accent--text"></emb-currency-sign>
                     {{
+                      choose === 'hours' ?
                       (
                         (selectedServices.price / currentValue) *
+                        rentalHour
+                      ).toFixed(2)
+                      :(
+                        (selectedServices.pricePerDay / currentValue) *
                         rentalHour
                       ).toFixed(2)
                     }}
@@ -402,6 +407,10 @@ export default {
       selectedServices: {
         id: "",
         sectitle: "",
+        costPerDay:"",
+        costPerHour:"",
+        pricePerDay:"",
+        pricePerHour:"",
         subtitle: "",
         paragraph: "",
         productGallery: {},
@@ -427,7 +436,7 @@ export default {
       this.lastName = data.lastName;
       this.email = data.email;
     }
-    alert(this.pricePerDay);
+    
   },
   methods: {
     driverType() {
@@ -442,7 +451,13 @@ export default {
     async AskForServices() {
       try {
         this.loading = true;
-        const price = this.selectedServices.price * this.rentalHour;
+        let price = '';
+        if(this.choose ==='hours'){
+            price = this.selectedServices.pricePerDay * this.rentalHour;
+        }else{
+          price = this.selectedServices.pricePerDay * this.rentalHour;
+        }
+       
         //   console.log(this.selectedServices)
         if (this.driver === "myself") {
           const data = new FormData();
@@ -523,7 +538,6 @@ export default {
             id: el._id,
           });
         });
-        alert(JSON.stringify(this.rentalNames));
         // res.data.data.forEach(el => {
         //   res.data.data.forEach(el => {
         // this.rentalNames.push({
@@ -561,6 +575,7 @@ export default {
       const id = strId[0];
       try {
         const res = await Rental.getOne(id);
+        console.log("Cars details:",res);
         const response = JSON.stringify(res.data.data);
         const data = JSON.parse("[" + response + "]");
         const curRes = await currency.getcurrency();
@@ -586,6 +601,10 @@ export default {
                 id: el._id,
                 sectitle: el.name.fr,
                 price: el.price,
+                costPerDay:el.costPerDay,
+                costPerHour: el.costPerHour,
+                pricePerDay: el.pricePerDay,
+                pricePerHour: el.pricePerDay,
                 paragraph: el.description.fr,
                 productGallery: {
                   pic1: this.linksformbackend + el.pictures.pic1,
@@ -612,6 +631,10 @@ export default {
                 id: el._id,
                 sectitle: el.name.en,
                 price: el.price,
+                costPerDay:el.costPerDay,
+                costPerHour: el.costPerHour,
+                pricePerDay: el.pricePerDay,
+                pricePerHour: el.pricePerDay,
                 paragraph: el.description.en,
                 productGallery: {
                   pic1: this.linksformbackend + el.pictures.pic1,
@@ -640,6 +663,10 @@ export default {
                 id: el._id,
                 sectitle: el.name.fr,
                 price: el.price,
+                costPerDay:el.costPerDay,
+                costPerHour: el.costPerHour,
+                pricePerDay: el.pricePerDay,
+                pricePerHour: el.pricePerDay,
                 paragraph: el.description.fr,
                 productGallery: {
                   pic1: this.linksformbackend + el.pictures.pic1,
@@ -659,6 +686,10 @@ export default {
                 id: el._id,
                 sectitle: el.name.en,
                 price: el.price,
+                costPerDay:el.costPerDay,
+                costPerHour: el.costPerHour,
+                pricePerDay: el.pricePerDay,
+                pricePerHour: el.pricePerDay,
                 paragraph: el.description.en,
                 productGallery: {
                   pic1: this.linksformbackend + el.pictures.pic1,

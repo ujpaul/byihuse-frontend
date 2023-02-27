@@ -35,7 +35,7 @@
 					</router-link>
 				</v-flex>
 				<v-flex xs12 sm12 md12 lg4 xl4>
-					<router-link :to="'/'+$i18n.locale+'/services'">
+					<router-link :to="'/'+$i18n.locale+'/byizewe'">
 						<div class="overlay-wrap">
 								<a href="javascript:void(0)">
 									<img alt="Sale Call In Action" class="w-100" src="/static/images/byizewe.jpg" width="640" height="430">

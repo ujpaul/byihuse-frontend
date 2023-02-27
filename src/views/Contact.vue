@@ -28,7 +28,7 @@
 								</div>
 								<div class="mb-6">
 									<h3>{{$t("message.Mail")}}</h3>
-									<a href="mailto:info@byihuse.rw" class="color-inherit">info@byihuse.rw</a>
+									<a href="mailto:info@byihuse.rw" class="color-inherit">groupfinvia@gmail.com</a>
 								</div>
 								<div class="mb-6">
 									<h3>{{$t("message.Address")}}</h3>
@@ -40,11 +40,11 @@
 									<h2>{{$t("message.WritetoUs")}}</h2>
 								</div>
 								<v-form  ref="form" v-model="valid">
-									<v-text-field v-model="fristName" type="text" :placeholder="label.firstName" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field v-model="lastName"	type="text"	:placeholder="label.lastName" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field v-model="email" type="email" :placeholder="label.email"></v-text-field>
-									<v-text-field v-model="subject"	type="text"	:placeholder="label.Subject" :rules="inputRules.basictextRules"></v-text-field>
-									<v-textarea v-model="message" rows="2" :label="label.message" :rules="inputRules.basictextRules"></v-textarea>
+									<v-text-field v-model="fristName" type="text" :placeholder="$t('message.firstname')" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="lastName"	type="text"	:placeholder="$t('message.lastname')" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="email" type="email" :placeholder="$t('message.yourEmail')"></v-text-field>
+									<v-text-field v-model="subject"	type="text"	:placeholder="$t('message.subject')" :rules="inputRules.basictextRules"></v-text-field>
+									<v-textarea v-model="message" rows="2" :label="$t('message.typeMsg')" :rules="inputRules.basictextRules"></v-textarea>
 									<v-btn :loading="loading" class="accent mx-0 mt-4" large @click.stop.prevent="getContactInfo">	{{$t("message.SendMessage")}}</v-btn>
 								</v-form>
 							</v-flex>

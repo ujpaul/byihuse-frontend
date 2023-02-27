@@ -32,7 +32,7 @@
 							<ul class="list-unstyled pl-0">
 								<li v-for="(list,key) in socialLinks"
 									:key="key">
-									<a :href="list.path">{{$t(list.menuItem)}}</a>
+									<a :href="list.path" target=”_blank”>{{$t(list.menuItem)}}</a>
 								</li>
 							</ul>
 						</div>
@@ -134,15 +134,15 @@ export default {
 			socialLinks:[
 				{
 					menuItem:"message.facebook",
-					path:"https://www.facebook.com/"
+					path:"https://www.facebook.com/profile.php?id=100085128098088"
 				},
 				{
-					menuItem:"message.twitter",
-					path:"https://twitter.com/"
+					menuItem:"message.instagram",
+					path:"https://www.instagram.com/byihuse.rw/"
 				},
 				{
 					menuItem:"message.youtube",
-					path:"https://www.youtube.com/"
+					path:"https://www.youtube.com/channel/UCmNNk2_b6XvHYXYbRk_Dz_g/featured"
 				},
 				// {
 				// 	menuItem:"message.googlePlus",

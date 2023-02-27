@@ -10,28 +10,29 @@
 			<v-btn style="min-width: 45%; height: 60px" @click="cat1" :class="{accent: attached}">CATEGORY I </v-btn>
 			<v-btn style="min-width: 54%; height: 60px" id="premium" @click="cat2" :class="{accent: !attached}">CATEGORY II</v-btn>
 		</div>
-		<div style="height: 400px; margin: 10px;" class="d-flex" v-if="category1">
+		<div style="height: 400px; margin: 10px;overflow: scroll" class="d-flex" v-if="category1">
 			<img src="/static/images/category1.jpg" alt="" width="75%" style="height:400px">
 			<div style="width: 25%; margin-left: 10px;" v-if="show">
 				<p><strong>Akira inzu tura muyawe</strong>
-				FINVIA GROUP LTD brings you a chance to own affordable house.This category has a house of two levels each level for only 26 millions rwandan francs(26 000,000 RWF)<br/>
+				FINVIA GROUP LTD brings you a chance to own affordable house.This category has a house of two levels, each level for only 50 millions rwandan francs(50, 000,000 RWF)<br/>
 				Payment of house comes in three installments<br/>
-				<b>Phase 1</b>: 8,700,000 RWF<br/>
-				<b>Phase 2</b>: 8,700,000 RWF<br/>
-				<b>Phase 2</b>: 8,700,000 RWF<br/>
+				<b>Phase 1</b>: 16,666,666 RWF<br/>
+				<b>Phase 2</b>: 16,666,666 RWF<br/>
+				<b>Phase 3</b>: 16,666,666 RWF<br/>
 				If you are interested get <a href="#" style="color: blue;"><u>Contract here</u></a> and request to be constructed you
 				</p>
 				<div style="width: 100%" class="text-center">
 					<v-btn color="primary" @click="showForm()">Request House</v-btn>
 					<v-btn color="accent" @click="showTrackingDiv()" style="margin-left: 10px;">Track Process</v-btn>
 				</div>
+				<akira-calcultaion :fees="50000000" :VAT="9000000" :akira="375000" style="margin:10px"/>
 			</div>
 			<div style="width: 25%; margin-left: 10px;" v-if="form1">
 				<h3 class="ms-5">Requesting form</h3>
 				<v-text-field :placeholder="$t('message.yourNames')" v-model="names" :rules="inputRules.basictextRules"></v-text-field>
 				<v-text-field :placeholder="$t('message.yourPhone')" type="number" v-model="phone" :rules="inputRules.basictextRules"></v-text-field>
 				<v-text-field :placeholder="$t('message.yourEmail')" type="email" v-model="email" :rules="inputRules.emailRules"></v-text-field>
-				<v-text-field placeholder="Amount to be paid" value="8,700,000 RWF" :rules="inputRules.emailRules" readonly></v-text-field>
+				<v-text-field :placeholder="$t('message.feePaid')" value="16,666,666 RWF" :rules="inputRules.emailRules" readonly></v-text-field>
 				<v-file-input label="Upload Contract" v-model="contract" accept="application/pdf"></v-file-input>
 				<div class="text-center">
 					<v-btn :loading="loading" color="accent" @click="request('Category I')">Request</v-btn>
@@ -52,28 +53,29 @@
 				</div>	
 			</div>
 		</div>	
-		<div style="height: 400px; margin: 10px;" class="d-flex" v-if="category2">
+		<div style="height: 400px; margin: 10px;overflow: scroll;" class="flex-d" v-if="category2">
 			<img src="/static/images/category2.jpg" alt="" width="75%" style="height:400px">
 			<div style="width: 25%; margin-left: 10px;" v-if="show">
 				<p><strong>Akira inzu tura muyawe</strong>
-				FINVIA GROUP LTD brings you a chance to own affordable house for only 15 millions rwandan francs(15 000,000 RWF)<br/>
+				FINVIA GROUP LTD brings you a chance to own affordable house for only 15 millions rwandan francs(17,700,000 RWF)<br/>
 				Payment of house comes in three installments<br/>
-				<b>Phase 1</b>: 5,000,0000 RWF<br/>
-				<b>Phase 2</b>: 5,000,0000 RWF<br/>
-				<b>Phase 2</b>: 5,000,0000 RWF<br/>
+				<b>Phase 1</b>: 5,900,000 RWF<br/>
+				<b>Phase 2</b>: 5,900,000 RWF<br/>
+				<b>Phase 3</b>: 5,900,000 RWF<br/>
 				If you are interested get <a href="#" style="color: blue;"><u>Contract here</u></a> and request to be constructed for you
 				</p>
 				<div style="width: 100%" class="text-center">
 					<v-btn color="primary" @click="switchdiv()">Request House</v-btn>
 					<v-btn color="accent" @click="showTrackingDiv()" style="margin-left: 10px;">Track Process</v-btn>
 				</div>
+				<akira-calcultaion :fees="17700000" :VAT="2700000" :akira="225000" style="margin:10px"/>
 			</div>
 			<div style="width: 25%; margin-left: 10px;" v-if="form">
 				<h3 class="ms-5">Requesting form</h3>
 				<v-text-field :placeholder="$t('message.yourNames')" v-model="names" :rules="inputRules.basictextRules"></v-text-field>
 				<v-text-field :placeholder="$t('message.yourPhone')" type="number" v-model="phone" :rules="inputRules.basictextRules"></v-text-field>
 				<v-text-field :placeholder="$t('message.yourEmail')" type="email" v-model="email" :rules="inputRules.emailRules"></v-text-field>
-				<v-text-field placeholder="Amount to be paid" value="5,000,000 RWF" :rules="inputRules.emailRules" readonly></v-text-field>
+				<v-text-field placeholder="Amount to be paid" value="5,900,000 RWF" :rules="inputRules.emailRules" readonly></v-text-field>
 				<v-file-input label="Upload Contract" v-model="contract" accept="application/pdf"></v-file-input>
 				<div class="text-center">
 					<v-btn :loading="loading" color="accent" @click="request('Category II')">Request</v-btn>
@@ -99,8 +101,11 @@
 
 <script>
 import housing from "Api/Housing";
-
+import AkiraCalcultaion from '../components/Global/AkiraCalculation.vue'
 export default {
+components:{
+	AkiraCalcultaion
+},
   data() {
     return {
 	loading: false,
@@ -201,4 +206,13 @@ export default {
   }
 };
 </script>
-
+<style scoped>
+.flex-d{
+	display: flex;
+}
+@media screen and(max-width:600px) {
+	.flex-d{
+		flex-direction: row;
+	}
+}
+</style>

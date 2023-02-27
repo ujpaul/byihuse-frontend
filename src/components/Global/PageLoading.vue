@@ -23,7 +23,8 @@ export default {
         .loading{
             margin: 50px auto;
             border: solid 5px #eee;
-            border-top: solid 5px #ff7d00;
+            border-top: solid 8px #ff7d00;
+            border-right: solid 8px #ff7d00;
             width: 70px;
             height: 70px;
             padding: 10px;

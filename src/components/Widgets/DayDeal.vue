@@ -3,7 +3,7 @@
     <v-container grid-list-xl pb-0>
       <v-layout row wrap>
         <v-flex xs12 sm12 md6 lg6 xl6>
-          <router-link to="/en/services">
+          <router-link to="/en/byoroshye">
             <v-img
               alt="deal of the day"
               :src="selectedPreviewImage"

@@ -1,92 +1,112 @@
 <template>
-   <div class="emb-contact-wrap">
-		<emb-page-title
-			heading="message.Services"
-			subHeading="message.Useourservices"
-            subTitle="Akira Byizewe"
-		>
-		</emb-page-title>
-        <div class="delivery" style="margin:20px 10px 30px 10px;">
-			<v-btn style="min-width: 45%; height: 60px" @click="registerAsLawyer" :class="{accent: attached}">{{$t("message.RegisterAsTechnician")}} </v-btn>
-			<v-btn style="min-width: 54%; height: 60px" id="premium" @click="findLawyers" :class="{accent: !attached}">{{$t("message.FindTechinician")}} </v-btn>
-		</div>
-        <v-flex xs12 sm12 md6 lg6 xl8>
-            <div class="mt-5"> 
-                <v-card style="margin-left: 20px;">
-                    <div class="text-center" style="margin-left: 20px;">
-                        <v-card-text v-if="registerLawyer">
-                        <v-form  ref="form" v-model="valid">
-                        <v-text-field :placeholder="$t('message.yourNames')" v-model="names" :rules="inputRules.basictextRules"></v-text-field>
-                        <v-text-field @keyup="checkInvalidId" :placeholder="$t('message.idNumber')" v-model="idnbr" :rules="inputRules.basictextRules" type="number"></v-text-field>
-                        <small style="color: red;" v-if="invalidIdNumber">Invalid id number</small>
-                        <v-text-field :placeholder="$t('message.yourPhone')" type="number" v-model="phone" :rules="inputRules.basictextRules"></v-text-field>
-                        <v-text-field :placeholder="$t('message.yourEmail')" type="email" v-model="email" :rules="inputRules.emailRules"></v-text-field>
-                        <v-select :items="types" :label="$t('message.typeOfTechnician')" v-model="type"></v-select>
-                        <v-select :items="levels" label="Level" v-model="level"></v-select>
-                        <v-file-input :label="$t('message.Cv')" v-model="cv" accept="application/pdf"></v-file-input>
-                        <v-file-input :label="$t('message.Diploma')" v-model="diploma" accept="application/pdf"></v-file-input>
-                        <v-file-input :label="$t('message.PreviousWork')" v-model="previous" accept="image/*"></v-file-input>
-                        <v-file-input :label="$t('message.Photo')" v-model="passport" accept="image/*"></v-file-input>
-                        
-                    <h5>{{$t('message.serviceFee')}}: 6000 RWF</h5>
-                    <v-checkbox
-                    :label="$t('message.termAndCondition')"
-                    v-model="terms"
-                    @click="toggleEnableDisable()"
-                    ></v-checkbox>
-                        <v-btn :loading="loading" class="accent" large @click="register" :disabled="isDisabled">{{$t('message.Submit')}}</v-btn>
-                        </v-form>
-                        
-                    </v-card-text>
-                    </div>
-               
-                </v-card>
-                <v-card style="margin-left: 20px;">
-                    <div class="text-center" style="margin-left: 20px;">
-                        <v-card-text v-if="requestTechnician">
-                        <v-form  ref="form" v-model="valid">
-                        <v-text-field :placeholder="$t('message.yourNames')" v-model="names" :rules="inputRules.basictextRules"></v-text-field>
-                        <v-text-field :placeholder="$t('message.yourPhone')" type="number" v-model="phone" :rules="inputRules.basictextRules"></v-text-field>
-                        <v-text-field :placeholder="$t('message.yourEmail')" type="email" v-model="email" :rules="inputRules.emailRules"></v-text-field>
-                        <v-select :items="types" :label="$t('message.typeOfTechnician')" v-model="type" @change="changeTechnician"></v-select>
-                        <v-select v-if="appear" :items="specialist" label="Specialist" v-model="type"></v-select>
-                        <v-select :items="experience" :label="$t('message.ExperienceNeeded')" v-model="exp"></v-select>
-                        <v-select :items="places" :label="$t('message.Workplace')" v-model="place" @change="changePlace"></v-select>
-                        <v-textarea :label="$t('message.WorkDetails')" v-model="details"></v-textarea>
-                        
-                    <h5>Service fees: {{service}} RWF</h5>
-                    <v-checkbox
-                    :label="$t('message.termAndCondition')"
-                    v-model="terms"
-                    @click="toggleEnableDisable()"
-                    ></v-checkbox>
-                        <v-btn :loading="loading" class="accent" large @click="orderTechnician" :disabled="isDisabled">{{$t('message.Submit')}}</v-btn>
-                        </v-form>
-                        
-                    </v-card-text>
-                    </div>
-               
-                </v-card>
-                <v-container style="margin: 10px 10px 100px 0;" v-if="searchLawyers">
-                     <div style="display: flex;">
-                         <div style="width: 40%;">
-                             <v-select :items="types" :label="$t('message.typeOfTechnician')" v-model="type" @change="selectLawyer = false"></v-select>
-                         </div>
-                         <div style="margin-top: 20px">
-                             <v-btn @click="search"  icon>
-                              <v-icon>search</v-icon>
-                           </v-btn>
-                           <v-btn @click="request" color="primary" style="margin-left: 30px;">
-                              {{$t('message.RequestTechnician')}}
-                           </v-btn>
-                         </div>
-                     </div>
-               </v-container>
-            </div>
-        </v-flex>
+    <div>
+        <div class="emb-contact-wrap">
+   <emb-page-title
+      heading="message.Services"
+      subHeading="message.Useourservices"
+      subTitle="Akira Byizewe"
+      >
+   </emb-page-title>
+   <div class="delivery" style="margin:20px 10px 30px 10px;">
+      <v-btn style="min-width: 45%; height: 60px" @click="registerAsLawyer" :class="{accent: attached}">{{$t("message.RegisterAsTechnician")}} </v-btn>
+      <v-btn style="min-width: 54%; height: 60px" id="premium" @click="findLawyers" :class="{accent: !attached}">{{$t("message.FindTechinician")}} </v-btn>
    </div>
+   <v-flex xs12 sm12 md6 lg6 xl8 v-if="registerLawyer">
+      <!-- <div class="mt-5">  -->
+      <!-- <div class="flex-container" v-if="registerLawyer"> -->
+      <v-card style="margin-left: 20px;" class="width">
+         <div class="text-center" style="margin-left: 20px;">
+            <v-card-text>
+               <v-form  ref="form" v-model="valid">
+                  <v-text-field :placeholder="$t('message.yourNames')" v-model="names" :rules="inputRules.basictextRules"></v-text-field>
+                  <v-text-field @keyup="checkInvalidId" :placeholder="$t('message.idNumber')" v-model="idnbr" :rules="inputRules.basictextRules" type="number"></v-text-field>
+                  <small style="color: red;" v-if="invalidIdNumber">Invalid id number</small>
+                  <v-text-field :placeholder="$t('message.yourPhone')" type="number" v-model="phone" :rules="inputRules.basictextRules"></v-text-field>
+                  <v-text-field :placeholder="$t('message.yourEmail')" type="email" v-model="email" :rules="inputRules.emailRules"></v-text-field>
+                  <v-select :items="types" :label="$t('message.typeOfTechnician')" v-model="type"></v-select>
+                  <v-select :items="levels" :label="$t('message.level')" v-model="level"></v-select>
+                  <v-file-input :label="$t('message.Cv')" v-model="cv" accept="application/pdf"></v-file-input>
+                  <v-file-input :label="$t('message.Diploma')" v-model="diploma" accept="application/pdf"></v-file-input>
+                  <v-file-input :label="$t('message.PreviousWork')" v-model="previous" accept="image/*"></v-file-input>
+                  <v-file-input :label="$t('message.Photo')" v-model="passport" accept="image/*"></v-file-input>
+                  <h5>{{$t('message.serviceFee')}}: 6000 RWF</h5>
+                  <v-checkbox
+                     :label="$t('message.termAndCondition')"
+                     v-model="terms"
+                     @click="toggleEnableDisable()"
+                     ></v-checkbox>
+                  <v-btn :loading="loading" class="accent" large @click="register" :disabled="isDisabled">{{$t('message.Submit')}}</v-btn>
+               </v-form>
+            </v-card-text>
+         </div>
+      </v-card>
+      
+   </v-flex>
+   <!-- Akira component -->
+   <v-flex xs12 sm12 md6 lg6 xl8>
+      <akira-calcultaion :VAT="900" :fees="fees" :akira="165" style="margin: 10px;overflow-x: auto;" v-if="registerLawyer"/>
+   </v-flex>
+</div>
+<v-flex xs12 sm12 md6 lg6 xl8>
+   <div style="display:flex;gap:50px;overflow:auto;" v-if="requestTechnician">
+      <v-card style="margin-left: 20px;">
+         <div class="text-center" style="margin-left: 20px;">
+            <v-card-text >
+               <v-form  ref="form" v-model="valid">
+                  <v-text-field :placeholder="$t('message.yourNames')" v-model="names" :rules="inputRules.basictextRules"></v-text-field>
+                  <v-text-field :placeholder="$t('message.yourPhone')" type="number" v-model="phone" :rules="inputRules.basictextRules"></v-text-field>
+                  <v-text-field :placeholder="$t('message.yourEmail')" type="email" v-model="email" :rules="inputRules.emailRules"></v-text-field>
+                  <v-select :items="types" :label="$t('message.typeOfTechnician')" v-model="type" @change="changeTechnician"></v-select>
+                  <v-select v-if="appear" :items="specialist" label="Specialist" v-model="type"></v-select>
+                  <v-select :items="experience" :label="$t('message.ExperienceNeeded')" v-model="exp"></v-select>
+                  <v-select :items="places" :label="$t('message.Workplace')" v-model="place" @change="changePlace"></v-select>
+                  <v-textarea :label="$t('message.WorkDetails')" v-model="details"></v-textarea>
+                  <h5>{{$t('message.serviceFee')}}: {{service}} RWF</h5>
+                  <v-checkbox
+                     :label="$t('message.termAndCondition')"
+                     v-model="terms"
+                     @click="toggleEnableDisable()"
+                     ></v-checkbox>
+                  <v-btn :loading="loading" class="accent" large @click="orderTechnician" :disabled="isDisabled">{{$t('message.Submit')}}</v-btn>
+               </v-form>
+            </v-card-text>
+         </div>
+      </v-card>
+   </div>
+</v-flex>
+<!-- akira component -->
+<v-flex xs12 sm12 md6 lg6 xl8>
+   <AkiraCalcultaion :fees="15000" :VAT="2700" :akira="345" v-if="place==='kigali'" style="margin:10px"/>
+   <AkiraCalcultaion :fees="50000" :VAT="9000" :akira="375" v-if="place==='outside kigali'" style="margin:10px"/>
+</v-flex>
+<!-- <v-flex xs12 sm12 md6 lg6 xl8> -->
+   <v-container style="margin: 10px 10px 100px 0;" v-if="searchLawyers">
+      <div style="display: flex;">
+         <div style="width: 40%;">
+            <v-select :items="types" :label="$t('message.typeOfTechnician')" v-model="type" @change="selectLawyer = false"></v-select>
+         </div>
+         <div style="margin-top: 20px">
+            <v-btn @click="search"  icon>
+               <v-icon>search</v-icon>
+            </v-btn>
+            <v-btn @click="request" color="primary" style="margin-left: 30px;">
+               {{$t('message.RequestTechnician')}}
+            </v-btn>
+         </div>
+      </div>
+   </v-container>
+<!-- </v-flex> -->
+</div>
+
 </template>
 <style scoped>
+.flex-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+.width{
+    width: 500px;
+}
 .input{
     border: 1px #EEEEEE solid;
     padding-left: 10px;
@@ -132,11 +152,23 @@
         display: none;
     }
 }
+@media screen and(min-width: 600px) {
+    .flex-container{
+        flex-direction: column;
+    }
+    .component{
+        width: 500px;
+    }
+}
 </style>
 <script>
 import Tech from 'Api/Technician';
+import AkiraCalcultaion from '../components/Global/AkiraCalculation.vue'
 import { mapGetters } from "vuex";
 export default {
+    components:{
+        AkiraCalcultaion
+    },
   data() {
     return {
         loading: false,
@@ -148,6 +180,7 @@ export default {
         keyword: '',
         exp: '',
         service: 15000,
+        fees: '6,000',
         valid: false,
         names: "",
         idnbr: "",

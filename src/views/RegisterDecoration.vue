@@ -126,6 +126,9 @@
             <h5 style="color: red;margin-top: 10px;">{{$t('message.serviceFee')}}: 6000 RWF</h5>
             </div>
           </v-col>
+          <v-flex xs12 sm12 md6 lg6 xl8>
+        <AkiraCalcultaion :VAT="900" :fees="fees" :akira="165"/>
+       </v-flex>
         </v-row>
       </v-col>
     </v-row>
@@ -133,10 +136,15 @@
 </template>
 <script>
 import rental from "Api/rental.js";
+import AkiraCalcultaion from '../components/Global/AkiraCalculation.vue'
 export default {
+  components:{
+    AkiraCalcultaion
+  },
   data() {
     return {
       loading: false,
+      fees: "6,000",
       fileOne: "https://via.placeholder.com/625x800",
       filetwo: "https://via.placeholder.com/625x800",
       filethree: "https://via.placeholder.com/625x800",

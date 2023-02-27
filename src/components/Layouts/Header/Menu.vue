@@ -101,18 +101,18 @@ export default {
         },
          {
           path: `productCommande`,
-          name: "message.makeCommandMenu",
+          name: "message.commande",
           icon: "pages",
           type: "sub_menu",
           children: [
         {
           path: `product-commande`,
-          name: "kora komande",
+          name: "Make command",
           icon: "perm_contact_calendar"
         },
         {
           path: `confirm-commande`,
-          name: "Emeza komande",
+          name: "Confirm received command",
           icon: "perm_contact_calendar"
         },
           ],

@@ -5,7 +5,7 @@
 				<v-flex sm12 md12 lg8 xl7>
 					<v-layout row mx-sm-0 mx-3  wrap align-center justify-center>
 						
-						<v-flex sm10 md5 lg6 xl6>
+						<v-flex sm10 md12 lg8 xl7>
 							<div class="emb-card sign-in-form form-margin d-block white pa-6">
 								<h4>{{$t('message.registerAsAgent')}}</h4>
 								<v-form ref="form" v-model="valid">
@@ -81,7 +81,11 @@
 								</v-form>
 							</div>
 						</v-flex>
+						
 					</v-layout>
+				</v-flex>
+				<v-flex sm10 md5 lg8 xl7>
+					<AkiraCalcultaion :akira="450" :fees="11800" :VAT="1800" class="component"/>
 				</v-flex>
 			</v-layout>
 		</div>
@@ -90,8 +94,12 @@
 	
 <script>
 import agent from "Api/Agent";
+import AkiraCalcultaion from '../components/Global/AkiraCalculation.vue'
 // import department from "Api/department";
 	export default{
+		components:{
+			AkiraCalcultaion
+		},
    	data () {
       	return {
 			  Departments: [],
@@ -170,3 +178,15 @@ import agent from "Api/Agent";
 	},
 	}
 </script>
+<style scoped>
+.component{
+	margin: 30px 10px 10px 120px;
+	width: 320px !important;
+}
+@media screen and (max-width:600px) {
+	.component{
+	margin: 30px 10px 10px 10px;
+	width: 285px !important;
+}
+}
+</style>

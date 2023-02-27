@@ -8,8 +8,30 @@
 		</emb-page-title>
         <div class="delivery" style="margin:20px 10px 30px 10px;">
 			<v-btn style="min-width: 45%; height: 60px" @click="registerAsLawyer" :class="{accent: attached}">{{$t("message.drycleanerServices")}} </v-btn>
-			<v-btn style="min-width: 54%; height: 60px" id="premium" :class="{accent: !attached}">{{$t("message.SanitaryService")}} </v-btn>
+			<v-btn style="min-width: 54%; height: 60px" id="premium" :class="{accent: !attached}" @click="sanitaryService">{{$t("message.SanitaryService")}} </v-btn>
 		</div>
+        <v-layout row mx-sm-0 mx-3 wrap align-center justify-center>
+            <v-flex sm10 md5 lg5 xl6>
+              <div class="emb-card sign-in-form form-margin d-block white pa-6" v-if="sanitaryServices">
+                <v-form  ref="form" v-model="valid">
+                    <v-select :items="services" :label="$t('message.serviceType')" v-model="service"></v-select>
+                    <v-text-field :placeholder="$t('message.yourNames')" v-model="names" :rules="inputRules.basictextRules"></v-text-field>
+                    <v-text-field :placeholder="$t('message.yourPhone')" type="number" v-model="phone" :rules="inputRules.basictextRules"></v-text-field>
+                    <v-text-field :placeholder="$t('message.yourEmail')" type="email" v-model="email" :rules="inputRules.emailRules"></v-text-field>
+                    <v-text-field :placeholder="$t('message.serviceAddress')" type="text" v-model="address"></v-text-field>
+                    <v-text-field :placeholder="$t('message.gateNumber')" type="text" v-model="gateNbr"></v-text-field>
+                    <v-text-field :placeholder="$t('message.roadNumber')" type="text" v-model="roadNbr"></v-text-field>
+                    <v-textarea v-model="serviceCommand" rows="2" :label="$t('message.serviceCommand')"></v-textarea>
+                    <v-btn
+                    class="accent mb-3 ma-0"
+                    large
+                    @click.stop.prevent="requestService"
+                    :loading="load"
+                  >{{$t("message.Submit")}}</v-btn>
+                </v-form>    
+              </div>
+            </v-flex>
+        </v-layout>
         <v-flex xs12 sm12 md6 lg6 xl8>
             <div class="mt-5">
                         <div v-if="drycleaner" class="clothes-type text-center">
@@ -91,6 +113,8 @@
                </v-container>
             </div>
         </v-flex>
+        
+        
    </div>
 </template>
 <style scoped>
@@ -167,6 +191,14 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+        service:"",
+        names:"",
+        phone:"",
+        gateNbr:"",
+        roadNbr:"",
+        email:"",
+        address:"",
+        serviceCommand:"",
         loading: false,
         loadingMessage: 'Loading services, please wait...',
         load: false,
@@ -189,8 +221,8 @@ export default {
             {text:'Umwungnizi mumategeko', value:'umunyamategeko'},
             {text:"Umuhesha w'inkiko", value:'umuhesha'},
         ],
+        services:[],
       emailRules: [
-        v => !!v || "E-mail is required",
         v => /.+@.+/.test(v) || "E-mail must be valid"
       ],
       inputRules: {
@@ -269,9 +301,58 @@ export default {
               console.log(error);
           }
       },
+    //   Get sanitary services
+    async getSanitaryService(){
+          try {
+              const res = await drycleaner.getSanitaryServices();
+              res.data.data.forEach(el => {
+                this.services.push({
+                    text: el.text,
+                    value: el.text
+                })
+                
+              });
+          } catch (error) {
+              console.log(error);
+          }
+      },
+    //   Request sanitary service
+    async requestService(){
+          this.load = true;
+          const data = {
+            requestedService:this.service,
+            names: this.names,
+            email:this.email,
+            phone:this.phone,
+            gateNumber:this.gateNbr,
+            roadNumber:this.roadNbr,
+            address: this.address,
+            serviceCommand:this.serviceCommand
+          }
+          try {
+              await drycleaner.requestService(data);
+              this.load = false;
+              this.service = ""
+              this.names = ""
+              this.email = ""
+              this.phone = ""
+              this.gateNbr =""
+              this.roadNbr = ""
+              this.address=""
+              this.serviceCommand = ""
+          } catch (error) {
+              console.log(error);
+          }
+      },
       registerAsLawyer() {
           this.sanitaryServices = false
           this.drycleaner = !this.drycleaner
+      },
+      sanitaryService(){
+        this.getSanitaryService();
+        this.drycleaner = false;
+        this.sanitaryServices = !this.sanitaryServices;
+        
       },
       findLawyers(){
           this.drycleaner = false;
